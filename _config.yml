@@ -9,7 +9,7 @@ relative_permalinks: true
 # Setup
 title:            Tech Musings
 tagline:          'A Tech Blog'
-description:      'A brazen two-column <a href="http://jekyllrb.com" target="_blank">Jekyll</a> theme that pairs a prominent sidebar with uncomplicated content. Made by <a href="https://twitter.com/mdo" target="_blank">@mdo</a>.'
+description:      'Collection of thoughts and discoveries made and collected on a Tech journey.'
 url:              http://kalkrishnan.github.io
 baseurl:          /
 
