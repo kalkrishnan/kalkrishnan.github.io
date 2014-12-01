@@ -6,7 +6,7 @@ description: ""
 
 ###Upgrading to Ruby 2.1.2:
 
-
+>
 * sudo yum remove ruby ruby-devel
 * $ sudo yum groupinstall "Development Tools"
 * $ sudo yum install openssl-devel
