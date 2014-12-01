@@ -23,7 +23,8 @@ Jekyll is a markdown parser that allows creation of lightweight blogs in markdow
 
 
 ##Folder Layout:
->_config.yml Stores configuration data.
+>
+_config.yml Stores configuration data.
 
 _includes This folder is for partial views.
 
