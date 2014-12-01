@@ -23,15 +23,34 @@ Jekyll is a markdown parser that allows creation of lightweight blogs in markdow
 
 
 ##Folder Layout:
->
-_config.yml Stores configuration data.
 
-_includes This folder is for partial views.
+<table>
+  <tr>
+    <td>_config.yml</td>
+    <td>Stores configuration data.</td>
+  </tr>
+  <tr>
+    <td>_includes</td>
+    <td>This folder is for partial views.</td>
+  </tr>
+  <tr>
+    <td>_layouts</td>
+    <td>This folder is for the main templates your content will be inserted into. You can have different layouts for different pages or page sections.</td>
+  </tr>
+  <tr>
+    <td>_posts</td>
+    <td>This folder contains your dynamic content/posts. the naming format is required to be @YEAR-MONTH-DATE-title.MARKUP@.</td>
+  </tr>
+  <tr>
+    <td>_site</td>
+    <td> This is where the generated site will be placed once Jekyll is done transforming it.</td>
+  </tr>
+  <tr>
+    <td>assets</td>
+    <td>
 
-_layouts This folder is for the main templates your content will be inserted into. You can have different layouts for different pages or page sections.
+ This folder is not part of the standard jekyll structure. The assets folder represents any generic folder you happen to create in your root directory. Directories and files not properly formatted for jekyll will be left untouched for you to serve normally.Images can be kept here to be referenced as /assets/image.jpg</td>
+  </tr>
+</table>
 
-_posts This folder contains your dynamic content/posts. the naming format is required to be @YEAR-MONTH-DATE-title.MARKUP@.
 
-_site This is where the generated site will be placed once Jekyll is done transforming it.
-
-assets This folder is not part of the standard jekyll structure. The assets folder represents any generic folder you happen to create in your root directory. Directories and files not properly formatted for jekyll will be left untouched for you to serve normally.Images can be kept here to be referenced as /assets/image.jpg
