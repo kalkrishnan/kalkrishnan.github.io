@@ -4,7 +4,6 @@ title: "Working with the Camel choice element"
 description: ""
 ---
 
-###Upgrading to Ruby 2.1.2:
 Positioning of end() and endchoice() seem to be very transluscent in the JAVA DSL right now.
 
 Code that doesn't compile:
