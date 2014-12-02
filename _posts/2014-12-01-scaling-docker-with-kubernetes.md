@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Scaling Docker with Kubernetes(Not your typical Khakhis)"
+title: "Scaling Docker with Kubernetes(Not your typical Khakis)"
 category: "To Do"
 description: ""
 ---
