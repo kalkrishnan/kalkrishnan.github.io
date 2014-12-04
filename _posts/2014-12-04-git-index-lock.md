@@ -8,7 +8,6 @@ category: "Git"
 While trying to run git add . kept getting the below exception:
 
 >
-
 	fatal: Unable to create '.git/index.lock': File exists.
 
 	If no other git process is currently running, this probably means a
