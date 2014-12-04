@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Working with the Camel choice element"
+title: "Working with the Camel choice element (is a bit like Sophie's choice)"
 description: ""
 ---
 
