@@ -261,6 +261,7 @@ a.sidebar-nav-item:focus {
 
 /* Red */
 .theme-base-0h .sidebar {
+  background-image: url("/assets/thematrix.gif");
   background-color: #3B0B0B;
 }
 .theme-base-0g .content a,
