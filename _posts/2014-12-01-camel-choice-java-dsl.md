@@ -2,7 +2,7 @@
 layout: post
 title: "Working with the Camel choice element (is a bit like Sophie's choice)"
 description: ""
-category:"camel"
+category: "camel"
 ---
 
 Positioning of end() and endchoice() seem to be very transluscent in the JAVA DSL right now.
