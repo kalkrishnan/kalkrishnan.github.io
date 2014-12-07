@@ -2,7 +2,7 @@
 layout: post
 title: "Blogging with Jekyll"
 description: ""
-category:
+category:"jekyll"
 tags: []
 ---
 
