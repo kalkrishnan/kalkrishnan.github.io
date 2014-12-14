@@ -6,7 +6,17 @@ category: "angular"
 ---
 
 ##Salient features:
+>
 
 *Based on MVC pattern
 
-*Scopes hold your Models (that's your data), they cooperate with your Controllers, and they give the Views everything they need (that's what the user sees and interacts with) e.g ng-app, ng-controller,
+*Scopes hold your Models (that's your data), they cooperate with your Controllers, and they give the Views everything they need (that's what the user sees and interacts with) e.g ng-app, ng-controller, ng-repeat
+
+*ng-model used for real time updates of fields
+
+*filters are used to filter fields according to regex:
+>
+var keyword = new RegExp($scope.nameFilter, 'i');
+    return !$scope.nameFilter || keyword.test(driver.Driver.givenName) || keyword.test(driver.Driver.familyName);
+};
+'i' is used in RegExp to perform case insensitive comparisons
