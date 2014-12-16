@@ -16,7 +16,13 @@ category: "angular"
 
 *filters are used to filter fields according to regex:
 >
-var keyword = new RegExp($scope.nameFilter, 'i');
+*var keyword = new RegExp($scope.nameFilter, 'i');
     return !$scope.nameFilter || keyword.test(driver.Driver.givenName) || keyword.test(driver.Driver.familyName);
 };
-'i' is used in RegExp to perform case insensitive comparisons
+*'i' is used in RegExp to perform case insensitive comparisons
+
+*Routes are used to route urls to new pages
+
+*ng-view to generate partial views on pages
+
+*Strings must use single quotes
