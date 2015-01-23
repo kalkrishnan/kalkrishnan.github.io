@@ -30,3 +30,14 @@ If you continue to get a lot of warnings, you can ignore these using:
 
 >
 npm WARN unmet dependency
+
+If you still get errors running grunt tasks:
+
+>
+npm update npm -g
+sudo npm update npm -g (i used this command on my mac)
+
+Then type this command
+
+>
+npm install
