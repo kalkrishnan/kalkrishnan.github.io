@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Camel"
+title: "Java"
 description: ""
 ---
 <ul class="posts">
