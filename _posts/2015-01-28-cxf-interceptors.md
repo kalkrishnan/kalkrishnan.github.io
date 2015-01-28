@@ -8,35 +8,8 @@ category: "java"
  If you ever work with CXF to consume web services and are looking for a way to instrument your code, CXF provides a pretty slick API in the form of <a href="http://cxf.apache.org/docs/interceptors.html">Interceptors</a>.
  These interceptors provide pretty advanced capabilities like changing the SOAP message or headers at runtime but let's take a look at basic logging interceptors:
  
-{% gist 8387126 %}
-import org.apache.cxf.interceptor.LoggingInInterceptor;
-import org.apache.cxf.interceptor.LoggingMessage;
-public class CXFSoapInInterceptor extends LoggingInInterceptor
-{
-  public CXFSSDPSoapInInterceptor()
-  {
-    super(-1);
-  }
-  @Override
-  protected String formatLoggingMessage(LoggingMessage loggingMessage)
-  {
-    return new loggingMessage.getPayload() != null ? loggingMessage
-        .getPayload().toString() : "";
-  }
-}
+{%  gist:2ba199d41112215784aa %}
 
->
-import org.apache.cxf.interceptor.LoggingMessage;
-import org.apache.cxf.interceptor.LoggingOutInterceptor;
-public class CXFSoapOutInterceptor extends LoggingOutInterceptor
-{
-  @Override
-  protected String formatLoggingMessage(LoggingMessage loggingMessage)
-  {
-    return (null,
-        loggingMessage.getPayload() != null ? loggingMessage.getPayload().toString() : null, null);
-  }
-}
 
 The two examples above inherit from two standard logging CXF Interceptors
 
