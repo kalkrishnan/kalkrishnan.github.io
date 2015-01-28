@@ -8,8 +8,7 @@ category: "java"
  If you ever work with CXF to consume web services and are looking for a way to instrument your code, CXF provides a pretty slick API in the form of <a href="http://cxf.apache.org/docs/interceptors.html">Interceptors</a>.
  These interceptors provide pretty advanced capabilities like changing the SOAP message or headers at runtime but let's take a look at basic logging interceptors:
  
- >
- 
+>
 import org.apache.cxf.interceptor.LoggingInInterceptor;
 import org.apache.cxf.interceptor.LoggingMessage;
 
@@ -30,8 +29,6 @@ public class CXFSoapInInterceptor extends LoggingInInterceptor
 
 }
 
-
->
 
 import org.apache.cxf.interceptor.LoggingMessage;
 import org.apache.cxf.interceptor.LoggingOutInterceptor;
