@@ -11,31 +11,25 @@ category: "java"
 >
 import org.apache.cxf.interceptor.LoggingInInterceptor;
 import org.apache.cxf.interceptor.LoggingMessage;
-
 public class CXFSoapInInterceptor extends LoggingInInterceptor
 {
-
   public CXFSSDPSoapInInterceptor()
   {
     super(-1);
   }
-
   @Override
   protected String formatLoggingMessage(LoggingMessage loggingMessage)
   {
     return new loggingMessage.getPayload() != null ? loggingMessage
         .getPayload().toString() : "";
   }
-
 }
 
-
+>
 import org.apache.cxf.interceptor.LoggingMessage;
 import org.apache.cxf.interceptor.LoggingOutInterceptor;
-
 public class CXFSoapOutInterceptor extends LoggingOutInterceptor
 {
-
   @Override
   protected String formatLoggingMessage(LoggingMessage loggingMessage)
   {
@@ -43,7 +37,7 @@ public class CXFSoapOutInterceptor extends LoggingOutInterceptor
         loggingMessage.getPayload() != null ? loggingMessage.getPayload().toString() : null, null);
   }
 }
-<
+
 The two examples above inherit from two standard logging CXF Interceptors
 
 >
