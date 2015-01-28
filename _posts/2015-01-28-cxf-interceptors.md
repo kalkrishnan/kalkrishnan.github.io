@@ -43,7 +43,7 @@ public class CXFSoapOutInterceptor extends LoggingOutInterceptor
         loggingMessage.getPayload() != null ? loggingMessage.getPayload().toString() : null, null);
   }
 }
-
+<
 The two examples above inherit from two standard logging CXF Interceptors
 
 >
