@@ -8,7 +8,7 @@ category: "java"
  If you ever work with CXF to consume web services and are looking for a way to instrument your code, CXF provides a pretty slick API in the form of <a href="http://cxf.apache.org/docs/interceptors.html">Interceptors</a>.
  These interceptors provide pretty advanced capabilities like changing the SOAP message or headers at runtime but let's take a look at basic logging interceptors:
  
-{%  gist:2ba199d41112215784aa %}
+{%  gist 2ba199d41112215784aa %}
 
 
 The two examples above inherit from two standard logging CXF Interceptors
