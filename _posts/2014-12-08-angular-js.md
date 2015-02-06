@@ -26,3 +26,9 @@ category: "angular"
 *ng-view to generate partial views on pages
 
 *Strings must use single quotes
+
+*ng-show display if present
+
+*ng-keyup detect keystrokes
+
+*ng-cloak hide script variables on page load
