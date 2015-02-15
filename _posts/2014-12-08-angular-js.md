@@ -32,3 +32,7 @@ category: "angular"
 *ng-keyup detect keystrokes
 
 *ng-cloak hide script variables on page load
+
+*ng-Route
+>
+$document.ready is moved to the angular controller angular.element(document).ready(function()
