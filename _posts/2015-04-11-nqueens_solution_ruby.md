@@ -4,9 +4,9 @@ title: "N Queens"
 description: ""
 category: "algorithms"
 ---
-So Today I thought I would try to tackle an age old algorithms problem I had been asked to 
+So Today I thought I would try to tackle an age old algorithm problem I had been asked to 
 solve in a couple of interviews in the past.. the nQueens problem. For the unfamiliar, the problem
-is to find a way to arrange n Queens on a n*n chess board in a manner that all are safe from each other. 
+is to find a way to arrange n Queens on an n*n chess board in a manner that all are safe from each other. 
 Took me a bit longer than I thought it would, but below is my solution in Ruby:
 
 >
