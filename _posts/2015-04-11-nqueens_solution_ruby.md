@@ -12,75 +12,75 @@ Took me a bit longer than I thought it would, but below is my solution in Ruby:
 >
  require 'set'
 
-class EightQueen
+	class EightQueen
 
-  def initialize()
-  end
+	  def initialize()
+	  end
 
- def markQueens
+		def markQueens
 
-    ytaken=SortedSet.new([0,1,2,3,4,5,6,7])
-    board=Hash.new(0)
-    puts getQueens(0, ytaken, board).inspect
- end
+			ytaken=SortedSet.new([0,1,2,3,4,5,6,7])
+			board=Hash.new(0)
+			puts getQueens(0, ytaken, board).inspect
+		end
 
- def getQueens(x, ytaken, board)
+		def getQueens(x, ytaken, board)
 
-    invalidY = Set.new
-    validY = nextValidY(x, ytaken, board, invalidY)
-    if(validY.nil?)
-      return nil
-    end
-    board[[x,validY]]=1
-    ytaken.delete(validY)
-    if(x!=7)
-      puts ytaken.inspect
-      nextX=x+1
-      subBoard = getQueens(nextX, ytaken, board)
+			invalidY = Set.new
+			validY = nextValidY(x, ytaken, board, invalidY)
+			if(validY.nil?)
+			  return nil
+			end
+			board[[x,validY]]=1
+			ytaken.delete(validY)
+			if(x!=7)
+			  puts ytaken.inspect
+			  nextX=x+1
+			  subBoard = getQueens(nextX, ytaken, board)
 
-      while(subBoard.nil?) do
-        board.delete([x,validY])
-        ytaken.add(validY)
-        invalidY.add(validY)
+			  while(subBoard.nil?) do
+				board.delete([x,validY])
+				ytaken.add(validY)
+				invalidY.add(validY)
 
-        validY = nextValidY(x, ytaken, board, invalidY)
-        if(validY.nil?)
-          return nil
-        end
-        ytaken.delete(validY)
-        invalidY.delete(validY)
-        board[[x,validY]]=1
-        subBoard = getQueens(nextX, ytaken, board)
-      end
-      board.merge(subBoard)
-    end
-      return board
-
-
- end
-
-def nextValidY(x, ytaken, board, invalidY)
-
-    ytaken.each {|yItr|
-         if(!(invalidY.include?(yItr)) && isValid(x, yItr, board))
-             return yItr
-          end
-
-        }
-      return nil
-end
-
- def isValid(x, y, board)
-   board.each do |key, array|
-      if((key[0]-x).abs == (key[1]-y).abs)
-        return false
-      end
-    end
-    return true
- end
-end
+				validY = nextValidY(x, ytaken, board, invalidY)
+				if(validY.nil?)
+				  return nil
+				end
+				ytaken.delete(validY)
+				invalidY.delete(validY)
+				board[[x,validY]]=1
+				subBoard = getQueens(nextX, ytaken, board)
+			  end
+			  board.merge(subBoard)
+			end
+			  return board
 
 
+		end
 
-c = EightQueen.new
-c.markQueens
+		def nextValidY(x, ytaken, board, invalidY)
+
+			ytaken.each {|yItr|
+				 if(!(invalidY.include?(yItr)) && isValid(x, yItr, board))
+					 return yItr
+				  end
+
+				}
+			  return nil
+		end
+
+		 def isValid(x, y, board)
+		   board.each do |key, array|
+			  if((key[0]-x).abs == (key[1]-y).abs)
+				return false
+			  end
+			end
+			return true
+		 end
+	end
+
+
+
+	c = EightQueen.new
+	c.markQueens
