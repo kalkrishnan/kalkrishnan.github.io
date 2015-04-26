@@ -17,4 +17,4 @@ This helps in creation of consistent environments across all regions(Dev, QA, Pr
 
 >
 
-	* Providers: Vagrant itself doesn’t provide any virtualization functionality.
+	* Providers- Vagrant itself doesn’t provide any virtualization functionality.
