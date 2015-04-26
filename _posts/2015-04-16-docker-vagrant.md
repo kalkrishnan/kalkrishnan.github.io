@@ -28,7 +28,7 @@ Docker:
 	* Docker needs kernel version 3.8.
 	** To Transfer files from the Host VM to the Docker container, the files must be in the same directory or a sub-directory as the Dockerfile.
 	
-* Building a Docker container using Vagrant which will deploy a war to jetty and run it:
+Building a Docker container using Vagrant which will deploy a war to jetty and run it:
 
 >
 	* The Docker provider depends entirely on the Dockerfile to specify the image settings and start the container.
