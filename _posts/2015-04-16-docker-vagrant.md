@@ -15,6 +15,5 @@ Using Vagrant's DSL, we can define a base set of instructions to create a VM .
 This allows for automated creation of VMs based on said script. 
 This helps in creation of consistent environments across all regions(Dev, QA, Production).
 
->
 
-	* Providers Vagrant itself doesn’t provide any virtualization functionality.
+	* Providers: Vagrant relies on Providers to interact with software installed on the vms.
