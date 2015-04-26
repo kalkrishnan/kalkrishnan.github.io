@@ -17,3 +17,6 @@ This helps in creation of consistent environments across all regions(Dev, QA, Pr
 
 
 	* Providers: Vagrant relies on Providers to interact with software installed on the vms.
+	* Boxes: Predefined images to build the environment according to instructions provided
+	* Vagrantfile: Set of instructions to customize the environment.
+	* Provisioners: Used to install software in the Virtualbox host.
