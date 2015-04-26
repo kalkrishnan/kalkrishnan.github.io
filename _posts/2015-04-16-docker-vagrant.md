@@ -17,4 +17,6 @@ This helps in creation of consistent environments across all regions(Dev, QA, Pr
 
 >
 
-	 Providers: Vagrant itself doesn’t provide any virtualization functionality; it relies on other products to do the heavy lifting. Providers are how Vagrant interacts with the products that will do the actual virtualization work.
+	Vagrant itself doesn’t provide any virtualization functionality,
+	it relies on other products to do the heavy lifting. 
+	Providers are how Vagrant interacts with the products that will do the actual virtualization work.
