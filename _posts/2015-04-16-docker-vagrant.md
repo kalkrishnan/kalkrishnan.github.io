@@ -11,4 +11,13 @@ For the unfamiliar:
 
 Vagrant is an automation tool with a domain-specific language (DSL) that is used 
 to automate the creation of VMs and VM environments.
+Using Vagrant's DSL, we can define a base set of instructions to create a VM .
+This allows for automated creation of VMs based on said script. 
+This helps in creation of consistent environments across all regions(Dev, QA, Production).
 
+>
+	- Providers: Vagrant itself doesn’t provide any virtualization functionality; it relies on other products to do the heavy lifting. Providers are how Vagrant interacts with the products that will do the actual virtualization work.
+	- Boxes: Predefined images to build the environment according to instructions provided
+	- Vagrantfile: Set of instructions to customize the environment.
+	- Provisioners: Used to install software in the Virtualbox host.
+	
