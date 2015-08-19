@@ -40,10 +40,10 @@ Went digging around in Java8 and found a few interesting features which I have t
 
 * Method References: Concise method of invoking existing methods.
 	
-	** Static references
-	** Constructor
-	** non-static method
-	** non-static method for a specific object
+	- Static references
+	- Constructor
+	- non-static method
+	- non-static method for a specific object
 
 >
 	Account::addInterest
@@ -54,7 +54,6 @@ Went digging around in Java8 and found a few interesting features which I have t
 	In functional programming, a monad is a structure that represents computations defined as sequence of steps. A type with a monad structure defines what it means
 	to chain operations, or nest functions of that type together.
 
-* Streams:
 
 	- collect is a terminal function to create a collection from stream
 	- collect(Collector)
