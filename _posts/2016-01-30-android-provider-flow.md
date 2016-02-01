@@ -6,4 +6,4 @@ category: "android"
 ---
 
 
-(/assets/android_provider_chain.png)
+[Android Provider Flow](/assets/android_provider_chain.png)
