@@ -31,3 +31,12 @@ Butterknife is used to inject views into layout files. However the setup was a b
 	* Add the below plugin for easy use of butterknife with Android Studio:
 	
 	File->Settings->Plugin->Browse Repositories->Android Butterknife Zelezny
+	
+	* Example:
+	
+	 @BindView(R.id.input_email)
+    EditText _emailText;
+	
+	In OnCreateView:   ButterKnife.bind(this);
+	
+And you are good to go!
