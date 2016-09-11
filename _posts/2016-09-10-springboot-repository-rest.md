@@ -93,3 +93,5 @@ public class UserConfiguration extends RepositoryRestConfigurerAdapter {
 	
 }
 {% endhighlight %}
+
+And presto, everything just works as promised.
