@@ -12,20 +12,25 @@ Spring Repository
 
 Defining a Spring Repository:
 
->
+{% highlight java %}
+
 	public interface UserRepository extends CrudRepository<User, Long>
 	{
 	}
+{% endhighlight %}
+
 	
 	By Default defining a repository as above will create the following REST URL: http://localhost:8080/users
 	
 If we want to change the path of the default url created:
 
->
+{% highlight java %}
 	@RepositoryRestResource(collectionResourceRel = "user", path = "user")
 	public interface UserRepository extends CrudRepository<User, Long> {
-
 		}
+		
+{% endhighlight %}
+
 		
 	Now the URL will be: http://localhost:8080/users
 	
@@ -33,7 +38,7 @@ This URl will allow CRUD actions using POST, PATCH, DELETE.
 
 Sometimes the need arises to define custom methods for the JPA repository:
 
->
+{% highlight java %}
 
 	@RepositoryRestResource(collectionResourceRel = "user", path = "user")
 	public interface UserRepository extends CrudRepository<User, Long> {
@@ -42,11 +47,13 @@ Sometimes the need arises to define custom methods for the JPA repository:
 
 	}
 	
+{% endhighlight %}
+
 	This will expose the following URL: http://localhost:8080/user/search/findByEmailAndPassword{?email,password}
 	
 Now let's define the User Entity:
 
->
+{% highlight java %}
 
 public class User {
 
@@ -69,11 +76,12 @@ public class User {
 	}
 	
 	}
+{% endhighlight %}
 	
 	
 Now a GET for this entity will by default not return the id for the entity, in this case the email. To enable this create a configuration class as below:
 
->
+{% highlight java %}
 
 @Configuration
 public class UserConfiguration extends RepositoryRestConfigurerAdapter {
@@ -84,3 +92,4 @@ public class UserConfiguration extends RepositoryRestConfigurerAdapter {
 	}
 	
 }
+{% endhighlight %}
