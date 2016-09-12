@@ -85,11 +85,11 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
 {% endhighlight %}
 
 The above code does the following things:
->
 
-1. Creates a simple broker.
-2. Creates an endpoint /messages which accepts cross origin requests from all domains.
-3. Enable SockJS fallback options.
+>
+	1. Creates a simple broker.
+	2. Creates an endpoint /messages which accepts cross origin requests from all domains.
+	3. Enable SockJS fallback options.
 
 
 Now you can connect to this websocket and subscribe to the topic as below:
