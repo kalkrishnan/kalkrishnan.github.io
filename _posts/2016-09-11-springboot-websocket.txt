@@ -33,7 +33,7 @@ To capture events emitted when entities are created and send them to a socket en
 public class UserEventHandler {
 
 	@Autowired
-	private SimpMessagingTemplate pushClient;
+	private SimpleMessagingTemplate pushClient;
 
 	@HandleAfterCreate(User.class)
 	public void handleUserSave(User user) {
@@ -42,6 +42,7 @@ public class UserEventHandler {
 }
 {% endhighlight %}
 
+The above code will use the Spring SimpleMessagingTemplate to push the created user to a /topic/user topic.
 Expose the above event handler through your Spring configuration:
 
 {% highlight java %}
@@ -82,6 +83,14 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
 }
 
 {% endhighlight %}
+
+The above code does the following things:
+>
+
+1. Creates a simple broker.
+2. Creates an endpoint /messages which accepts cross origin requests from all domains.
+3. Enable SockJS fallback options.
+
 
 Now you can connect to this websocket and subscribe to the topic as below:
 {% highlight javascript %}
