@@ -7,8 +7,6 @@ category: "Spring Boot"
 
 Spring boot is an awesome "wrapper" which allows Spring projects to be created and run with minimal configuration and it makes development fun again. While exploring Spring boot repositories, I needed to perform certain actions based on entities being created or deleted:
 
-Spring Repository
---
 
 Defining a Spring Repository:
 

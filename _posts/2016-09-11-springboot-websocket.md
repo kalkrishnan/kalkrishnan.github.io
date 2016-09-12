@@ -8,7 +8,6 @@ category: "Spring Boot"
 Spring boot is an awesome "wrapper" which allows Spring projects to be created and run with minimal configuration and it makes development fun again. I was looking for a way to emit events from my Spring repositories to topics that consumers could subscribe to and came across spring boot websockets.
 
 Add the below to your build.gradle:
---
 
 {% highlight java %}
     compile("org.springframework.boot:spring-boot-starter-websocket")
