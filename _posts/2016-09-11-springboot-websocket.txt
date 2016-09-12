@@ -87,6 +87,7 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer {
 The above code does the following things:
 
 >
+
 	1. Creates a simple broker.
 	2. Creates an endpoint /messages which accepts cross origin requests from all domains.
 	3. Enable SockJS fallback options.
