@@ -134,8 +134,4 @@ http://localhost:8080/user/test@gmail.com?projection=inlineFavorites
 
 {% endhighlight %}
 
-more discussion on the same here:
-
-[
-http://stackoverflow.com/questions/30220333/why-is-an-excerpt-projection-not-applied-automatically-for-a-spring-data-rest-it
-]
+more discussion on [StackOverflow](http://stackoverflow.com/questions/30220333/why-is-an-excerpt-projection-not-applied-automatically-for-a-spring-data-rest-it)
