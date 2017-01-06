@@ -32,7 +32,7 @@ This resulted in the following JSON:
       "href" : "http://localhost:8080/user/test"
     },
     "user" : {
-      "href" : "http://localhost:8080/user/test@gmail.com{?projection}",
+      "href" : "http://localhost:8080/user/test@gmail.com",
       "templated" : true
     },
     "favorites" : {
@@ -136,6 +136,6 @@ http://localhost:8080/user/test@gmail.com?projection=inlineFavorites
 
 more discussion on the same here:
 
-{% highlight java %}
+[
 http://stackoverflow.com/questions/30220333/why-is-an-excerpt-projection-not-applied-automatically-for-a-spring-data-rest-it
-{% endhighlight %}
+]
