@@ -7,8 +7,8 @@ category: "Devops"
 
 Ahh the jenkins pipeline. The cure for all evils. They entice you in with images like the below, but getting a pipeline up and running involves a lot of soul searching and googling sometimes even venturing into the dark place known as the second page of google results.
 
-![My helpful screenshot]({{ site.url }}/assets/pipeline1.png)
-![My helpful screenshot]({{ site.url }}/assets/pipeline2.jpeg)
+![screenshot 1]({{ site.url }}/assets/pipeline1.png)
+![screenshot 2]({{ site.url }}/assets/pipeline2.jpg)
 
 
 Below is my JPA repository:
