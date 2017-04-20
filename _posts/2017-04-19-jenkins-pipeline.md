@@ -77,11 +77,11 @@ My next challenge was to use credentials stored in Jenkins so I did not have to 
 
 
 '''
+
 withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'ef4e1f38-7061-4acf-91e3-d041e0d28638',
                     usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']])
 {
 }					
-
 '''
 
 Anything within the scope of the above will have access to the credential indicated by the id. While this is a pretty elegant solution, it is a little too powerful for it's  own good. If the username is 'testuser' it will replace any occurance of testuser with the password even when testuser needs to be used in a string while defining paths.  
@@ -89,9 +89,9 @@ Anything within the scope of the above will have access to the credential indica
 Another issue I faced was invoking batch commands through groovy, which was not a big challenge and was easily solved by doing this:
 
 '''
+
 def command = "C:\\Windows\\SysWOW64\\psexec -s  \\\\"+serverParam+" -u "+USERNAME+" -p "+ PASSWORD+" -h cmd /c \"sc stop Tomcat8\""
     println command.execute().text
-
 '''
 
 And that was it, I was able to run a continuous delivery pipeline depicted beautifully as above. I still have some clunkiness and challenges that I am working on:
