@@ -5,24 +5,71 @@ description: ""
 category: "Devops"
 ---
 
-Ahh the jenkins pipeline. The cure for all evils. They entice you in with images like the below, but getting a pipeline up and running involves a lot of soul searching and googling sometimes even venturing into the dark place known as the second page of google results.
+Ahh the jenkins pipeline. The cure for all evils. They entice you in with images like the below, but getting a pipeline up and running involves a lot of soul searching and googling sometimes even venturing into the dark place known as the second page of google results:
 
 ![screenshot 1]({{ site.url }}/assets/pipeline1.png)
 ![screenshot 2]({{ site.url }}/assets/pipeline2.jpg)
 
 
-Below is my JPA repository:
+After trying and failing to get a sophisticated build pipeline up and running, I attacked something simpler, a continuous delivery pipeline which involved cleaning up, deploying to and restarting my Tomcat container.
+
+The first step was to allow the user to select a server from a yaml configuration and then populate the environment with appropriate values. 
+Simple enough, yea you would think so. Since there is apparently no other script section in a pipeline job but the pipeline DSL, I had to write code to populate the build environment which there weren't any clear instructions for. To begin with I wanted to write some groovy code to parse my yaml:
 
 {% highlight java %}
-    @RepositoryRestResource(collectionResourceRel = "user", path = "user", excerptProjection = UserInlineFavorites.class)
-	public interface UserRepository extends CrudRepository<User, String> {
+import org.yaml.snakeyaml.Yaml
+import hudson.model.*
+ 
+ 
+serverParam = "${env.SERVER}"
 
-		User findByEmailAndPassword(@Param("email") String email, @Param("password") String password);
-
-	}
+node
+{
+    stage("Populating Environment")
+    {
+      
+        Yaml parser = new Yaml()
+        servers=parser.load(("C:/users/jenkinsldap/servers.yml" as File).text)
+        println servers
+        for(server in servers)
+        {
+       
+                if(server.server.name == serverParam)
+                {
+                                tomcathome = server.server.tomcathome
+                                println tomcathome
+                                username = server.server.user
+                                println username
+                                
+                                break;
+                }
+        }
+       
+}
 
 {% endhighlight %}
 
+I initially put the imports inside the node, but that's a big no-no.Once I had this code working, I figured I can use the variables in my subsequent stages, but again I was stumped at the inability to do so. I tried some solutions to store the variables in the environment, none of which were quite satisfactory:
+
+* Export to a file
+* Include other stages within the scope of the node.
+
+Then after extensive googling, I came up with the below snippet to populate the environment:
+
+{% highlight java %}
+@NonCPS
+    def populateEnv(){ binding.variables.each{k,v -> env."$k" = "$v"} }
+{% endhighlight %}
+
+* Methods have to be defined outside of a node or stage
+
+The above method when called will push all variables defined into the build environment:
+
+{% highlight java %}
+ TOMCAT_REMOTE=tomcathome.replace(":","\$")
+ populateEnv()
+ bat 'del /F /Q "\\\\%serverParam%\\%TOMCAT_REMOTE%\\webapps\\test.war"'
+{% endhighlight %}
 This resulted in the following JSON:
 
 {% highlight java %}
