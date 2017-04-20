@@ -49,10 +49,11 @@ node
 
 {% endhighlight %}
 
-I initially put the imports inside the node, but that's a big no-no.Once I had this code working, I figured I can use the variables in my subsequent stages, but again I was stumped at the inability to do so. I tried some solutions to store the variables in the environment, none of which were quite satisfactory:
+I initially put the imports inside the node, but that's a big no-no. Once I had this code working, I figured I can use the variables in my subsequent stages, but again I was stumped at the inability to do so. I tried some solutions to store the variables in the environment, none of which were quite satisfactory:
 
 * Export to a file
 * Include other stages within the scope of the node.
+* Use withEnv, but everything needing the env variables has to be defined within the enclosing block.
 
 Then after extensive googling, I came up with the below snippet to populate the environment:
 
@@ -70,119 +71,31 @@ The above method when called will push all variables defined into the build envi
  populateEnv()
  bat 'del /F /Q "\\\\%serverParam%\\%TOMCAT_REMOTE%\\webapps\\test.war"'
 {% endhighlight %}
-This resulted in the following JSON:
+
+My next challenge was to use credentials stored in Jenkins so I did not have to store passwords in plain text. The common suggestions provided are the EnvInject plugin or the Credentials Binding plugin, but the pipeline does not provide any ability to use these. Again after venturing into the dark corners of Google, I came up with the below:
+
+
 
 {% highlight java %}
-
+withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'ef4e1f38-7061-4acf-91e3-d041e0d28638',
+                    usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']])
 {
-  "name" : "test",
-  "email" : "test@gmail.com",
-  "password" : "test",
-  "_links" : {
-    "self" : {
-      "href" : "http://localhost:8080/user/test"
-    },
-    "user" : {
-      "href" : "http://localhost:8080/user/test@gmail.com",
-      "templated" : true
-    },
-    "favorites" : {
-      "href" : "http://localhost:8080/user/test@gmail.com/favorites"
-    }
-  }
-}
+}					
+
 {% endhighlight %}
 
-	
-The problem with this is the nested favorites entities have to obtained using another REST call which seemed like a waste to me. After digging around for a while, I came across the concept of Projections to obtain fully resolved entities:
+Anything within the scope of the above will have access to the credential indicated by the id. While this is a pretty elegant solution, it is a little too powerful for it's  own good. If the username is 'testuser' it will replace any occurance of testuser with the password even when testuser needs to be used in a string while defining paths.  
 
-Create a projection interface to define the structure of the resolved entity:
+Another issue I faced was invoking batch commands through groovy, which was not a big challenge and was easily solved by doing this:
 
 {% highlight java %}
-package com.kkrishna.gymtime.dao;
-
-import java.util.List;
-
-import org.springframework.data.rest.core.config.Projection;
-
-@Projection(name = "inlineFavorites", types = { User.class })
-public interface UserInlineFavorites {
-
-	public String getName() ;
-
-	public String getEmail();
-
-	public String getPassword() ;
-
-	public List<Gym> getFavorites() ;
-}
+def command = "C:\\Windows\\SysWOW64\\psexec -s  \\\\"+serverParam+" -u "+USERNAME+" -p "+ PASSWORD+" -h cmd /c \"sc stop Tomcat8\""
+    println command.execute().text
 
 {% endhighlight %}
 
-Add the below to the Spring configuration to force it to always use the projection:
+And that was it, I was able to run a continuous delivery pipeline depicted beautifully as above. I still have some clunkiness and challenges that I am working on:
 
-{% highlight java %}
-config.getProjectionConfiguration().addProjection(UserInlineFavorites.class, User.class);
-
-{% endhighlight %}
-
-Finally change the repository to add the projection:
-
-{% highlight java %}
-@RepositoryRestResource(collectionResourceRel = "user", path = "user", excerptProjection = UserInlineFavorites.class)
-public interface UserRepository extends CrudRepository<User, String> {
-
-	User findByEmailAndPassword(@Param("email") String email, @Param("password") String password);
-
-}
-
-{% endhighlight %}
-
-Now the resulting json is:
-
-{% highlight javascript %}
-{
-  "name" : "test",
-  "favorites" : [ {
-    "latLong" : "33.64_-117.86",
-    "name" : "Pilates Plus Newport Beach",
-    "address" : "1220 Bison Ave, Newport Beach, CA 92660"
-
-  }, {
-    "latLong" : "33.65_-117.84",
-    "name" : "Yoga Shakti Wellness Center",
-    "address" : "4249 Campus Dr B140, Irvine, CA 92612"
-  }, {
-    "latLong" : "33.66_-117.86",
-    "name" : "Equinox Newport Beach",
-    "address" : "19540 Jamboree Rd, Irvine, CA 92612"
-  }, {
-    "latLong" : "33.63_-117.83",
-    "name" : "Merage Jewish Community Center of Orange County",
-    "address" : "1 Federation Way #200, Irvine, CA 92603"
-  } ],
-  "email" : "test@gmail.com",
-  "password" : "mirage2000",
-  "_links" : {
-    "self" : {
-      "href" : "http://localhost:8080/user/test@gmail.com"
-    },
-    "user" : {
-      "href" : "http://localhost:8080/user/test@gmail.com{?projection}",
-      "templated" : true
-    },
-    "favorites" : {
-      "href" : "http://localhost:8080/user/test@gmail.com/favorites"
-    }
-  }
-}
-{% endhighlight %}
-
-The caveat to this is that to retrieve single resources you have to add the projection to the URL:
-
-{% highlight java %}
-http://localhost:8080/user/test@gmail.com?projection=inlineFavorites
-
-{% endhighlight %}
-
-more discussion on [StackOverflow](http://stackoverflow.com/questions/30220333/why-is-an-excerpt-projection-not-applied-automatically-for-a-spring-data-rest-it)
+* Better way to handle credentials which works as smoothly as injecting passwords using the EnvInject plugin.
+* For some reason the bat command 'sc query Tomcat' doesn't seem to work when called from the pipeline.
+* The pipeline script from scm runs in a Groovy sandbox which is very restrictive and does not allow many Groovy libraries. So currently the build has the script which is painful to synchronize with Git and any change to it needs script approval.
