@@ -10,7 +10,7 @@ Say you committed some code, then committed some experimental stuff on top of th
 Below is my JPA repository:
 
 {% highlight java %}
-   git rebase -i HEAD~<as many commits back as you need to go>
+git rebase -i HEAD~<as many commits back as you need to go>
 in the interactive screen, re-order the picks
 git push origin --force
 
