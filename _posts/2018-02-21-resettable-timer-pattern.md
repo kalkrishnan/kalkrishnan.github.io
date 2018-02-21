@@ -2,7 +2,7 @@
 layout: post
 title: "resettable timer pattern"
 description: ""
-category: "Algorithms"
+category: "algorithms"
 ---
 
 Recently I undertook the task of refactoring batch processing at work. The jobs followed a similar pattern of records get staged, messages are sent and the stage status is updated for each message. This causes numerous DB connections to be opened up for every message and doing updates in separate threads seemed like a waste of time to me.
