@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Spring Boot"
+title: "Spring"
 description: ""
 ---
 <ul class="posts">
