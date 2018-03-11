@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "spring aop performance monitoring"
+title: "spring actuator"
 description: ""
 category: "Spring Boot"
 ---
