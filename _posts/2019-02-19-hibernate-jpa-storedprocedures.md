@@ -26,17 +26,17 @@ The resultClasses are important to help Hibernate understand how to parse the re
 
 2. Call from DAO using entity Manager:
 
-```java
+    ```java
 StoredProcedureQuery loadEntitySP = this.getEntityManager().createNamedStoredProcedureQuery("LOAD_ENTITY");
 		loadClaimSP.setParameter("Id",Id);
 		List<Object> results = loadEntitySP.getResultList();
-```
+    ```
 
 3. Iterate through the results to get the object needed. If the stored procedure returns multiple sql results, hibernate maps it into multiple entity objects(one instance, multiple references). The API does not provide a way to restrict this as it does with hql queries.
 
-```java
+    ```java
 
 	Object[] resultArray = (Object[]) results.get(0); //get the first result from the multiple duplicate results
 			Entity entity = (Entity) resultArray[0] ;// get the main entity, since the result will contain an array of all the entities which are part of the result classes. Only references, not multiple instances.
-			return entity;
-```
+ 			return entity;
+    ```
