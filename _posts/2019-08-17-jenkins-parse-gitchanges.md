@@ -37,7 +37,7 @@ def entries = changeSet.getItems();
 
     * Parse entries to capture authors, comments and files changed
 
-{% highlight java %}
+```Java
 def map=[:]
 
 
@@ -73,7 +73,7 @@ if(changeSet.getLogs())
 }
 return map
 
-{% endhighlight %}
+```
 
 The above code parses the changeset entries to capture authors and logs and creates an environment variable with the files changed in this changeset.
 
