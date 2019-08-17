@@ -16,7 +16,7 @@ My process for doing the same was:
 
 1.    Parsing the changelog: 
 
-..* Get the current build: 
+    * Get the current build: 
 
 {% highlight java %}
 import hudson.model.*;
