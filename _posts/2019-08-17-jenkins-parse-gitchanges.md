@@ -77,3 +77,12 @@ return map
 
 The above code parses the changeset entries to capture authors and logs and creates an environment variable with the files changed in this changeset.
 
+2.    Conditional action to trigger based on files changed:
+
+![Conditional Action](http://kalkrishnan.github.io/assets/jenkinsConditionalAction.png "Conditional Action")
+
+
+3.    Editable Email notification if conditional action is triggered, with attachments: 
+
+
+![Editable email notification](http://kalkrishnan.github.io/assets/jenkinsEditableEmail.png "Editable email")
