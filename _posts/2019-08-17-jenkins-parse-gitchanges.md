@@ -14,7 +14,7 @@ My process for doing the same was:
 * Send notification emails with relevant attachments.
 
 
-1. Parsing the changelog: 
+1.    Parsing the changelog: 
 
 ..* Get the current build: 
 
@@ -28,14 +28,14 @@ def thr = Thread.currentThread();
 def build = thr?.executable;
 {% endhighlight %}
 
-..* Get the gitlog changeset and entries within the changeset
+    * Get the gitlog changeset and entries within the changeset
 
 {% highlight java %}
 def changeSet= build.getChangeSet();
 def entries = changeSet.getItems();
 {% endhighlight %}
 
-..* Parse entries to capture authors, comments and files changed
+    * Parse entries to capture authors, comments and files changed
 
 {% highlight java %}
 def map=[:]
@@ -77,7 +77,7 @@ return map
 
 The above code parses the changeset entries to capture authors and logs and creates an environment variable with the files changed in this changeset.
 
-2. Conditional action to trigger based on files changed:
+2.    Conditional action to trigger based on files changed:
 
 
-3. Editable Email notification if conditional action is triggered, with attachments: 
+3.    Editable Email notification if conditional action is triggered, with attachments: 
