@@ -4,6 +4,7 @@ title: "Java 8-10 migration"
 description: ""
 category: "Java"
 ---
+Below are the steps I took to upgrade an existing legacy application(Voyager) to Java 10.
 
 **1)** Setting up the environment:
  Download the jdk and jre for Java 10 and open up powershell and run the below commands to allow you to run with Java 10 without affecting your entire machine:
@@ -131,7 +132,7 @@ This is because certain classes need to be included through 3rd party jars and a
 	</dependency>
 ```		
 
-All jars need to be upgraded similarly and tested after startup. There might be other runtime issues which will have to be resolved similarly.
+All Voyager jars need to be upgraded similarly and tested after startup. There might be other runtime issues which will have to be resolved similarly.
 
 ***Based on Spring documentation, the minimum supported version for Java 9/10 is Spring 5.0. However, based on stackoverflow and my testing, Spring 4.3 seems to be work on it. Spring 5.0 will be a major upgrade and will have to be deferred to a later time***
 
